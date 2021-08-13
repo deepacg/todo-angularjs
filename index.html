@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do App</title>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js'></script>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body ng-app="myApp" ng-controller='myController'>
+
+   <b>{{names[1]}}</b>
+
+    <h1>To do list</h1>
+    <input type="text" ng-model="task_name" id='task' placeholder="Task title here">
+    <button ng-click="save_task(task_name)">Save</button>
+    <br><br><br>
+
+    <table border=1>
+        <tr>
+            <th>#</th>
+            <th>Task title</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="task in tasks">
+            <td>{{$index+1}}</td>
+            <td class='{{task.status?"completed":""}}''>{{task.task_title}}</td>
+            <td>{{task.status?'Finished':'In progress'}}</td>
+            <td>
+                <button ng-click="delete_task($index)">Delete</button>
+                <button ng-click="update_task($index)">Finished</button>
+            </td>
+        </tr>
+    </table>
+
+    <script src='todo.js'></script>
+
+</body>
+</html>
